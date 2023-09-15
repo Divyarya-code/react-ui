@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -33,14 +34,20 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  async function handleSubmit(event){
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    navigate('/Dashboard')
+    const userData= await axios.get('https://localhost:7075/api/users')
+    let flag = 0
+    userData.data.map((user)=>{
+      if(user.username == data.get('email') && user.password == data.get('password')){
+        flag = 1
+        navigate('/Dashboard')
+      }
+    })
+    if(!flag){
+      alert("Username or Password is Invalid")
+    }
   };
 
   return (
