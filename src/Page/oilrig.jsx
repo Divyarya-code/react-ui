@@ -12,9 +12,11 @@ import Paper from '@mui/material/Paper';
 
 // Sample data
 const rows = [
-  { id: 1, name: 'John Doe', email: 'john@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-  { id: 3, name: 'Bob Johnson', email: 'bob@example.com' },
+  {  id:"RIG1", name: "MUMRIG1", location: "Mumbai" },
+  { id:"RIG2", name: "MUMRIG2", location: "Mumbai" },
+  { id:"RIG3", name: "MUMRIG3", location: "Mumbai" },
+  { id:"RIG4", name: "SURRIG1", location: "Surat" },
+  { id:"RIG5", name: "KOLRIG1", location: "Kolkata" },
 ];
 
 export default function OilRig() {
@@ -24,9 +26,9 @@ export default function OilRig() {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
+              <TableCell style={tableHeaderStyle}>RIG ID</TableCell>
+              <TableCell style={tableHeaderStyle}>RIG Name</TableCell>
+              <TableCell style={tableHeaderStyle}>RIG Location</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -34,7 +36,7 @@ export default function OilRig() {
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.location}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -54,3 +56,14 @@ export default function OilRig() {
     </Box>
   )
 }
+const tableHeaderStyle = {
+  backgroundColor: '#0074d9',
+  color: 'white',
+  padding: '10px',
+  textAlign: 'left',
+};
+
+const tableCellStyle = {
+  border: '1px solid #ccc',
+  padding: '10px',
+};
